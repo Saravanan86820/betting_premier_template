@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-logo"> 
+            <img src="/assets/logo.svg" alt="BettingPremier" width="150" height="50">
+        </div>
+        <div class="line"></div>
+        <div class="nav-content">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#">
+                        <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                        <span>Football</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                        <span>Baseball</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                        <span>Basketball</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                        <span>Volleyball</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                        <span>Handball</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#">
+                        <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                        <span>More</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li  ><a href="#">
+                            <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                            <span>Handball</span>
+                        </a></li>
+                        <li><a href="#">
+                            <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                            <span>Handball</span>
+                        </a></li>
+                        <li><a href="#">
+                            <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                            <span>Handball</span>
+                        </a></li>
+                        <li><a href="#">
+                            <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                            <span>Handball</span>
+                        </a></li>
+                        <li><a href="#">
+                            <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                            <span>Handball</span>
+                        </a></li>
+                        
+                        
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-right">
+                    <a href="#">
+                        <img class="nav-item-icon" src="/assets/football.svg" alt="football-icon">
+                        <span>Latest</span>
+                        <img class="new-gif" src="/assets/new.gif" alt="football-icon">
+
+                    </a>
+                </li>
+            </ul>
+            
+        </div>
+        <div class="hamburger" onclick="openNav()">
+            <img src="/assets/hamburger.svg" alt="Menu" width="30" height="30">
+        </div>
+        <div id="sidenavOverlay" class="sidenav-overlay" style="display: none;" onclick="handleOverlayClick(event)">
+            <div id="mySidenav" class="sidenav" style="display: none;"></div>
+                <div class="mobile-navbar">
+                    <div class="mobile-logo">
+                        <img src="/assets/logo.svg" alt="BettingPremier" class="mobile-logo-img">
+                        <button class="closebtn" onclick="closeNav()">×</button>
+                    </div>
+                    <!-- your nav items... -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    function openNav() {
+        const overlay = document.getElementById("sidenavOverlay");
+        const sidenav = document.getElementById("mySidenav");
+
+        overlay.style.display = "block";
+        sidenav.classList.add("open");
+        sidenav.style.animation = "slideIn 0.3s forwards";
+    }
+
+    function closeNav() {
+        const overlay = document.getElementById("sidenavOverlay");
+        const sidenav = document.getElementById("mySidenav");
+
+        sidenav.style.animation = "slideOut 0.3s forwards";
+
+        // Wait for animation to complete
+        setTimeout(() => {
+            overlay.style.display = "none";
+            sidenav.classList.remove("open");
+        }, 300);
+    }
+
+    function handleOverlayClick(event) {
+        // Close only if clicking outside the sidebar
+        const sidenav = document.getElementById("mySidenav");
+        if (!sidenav.contains(event.target)) {
+            closeNav();
+        }
+    }
+</script>
+
+
+</html>
+
