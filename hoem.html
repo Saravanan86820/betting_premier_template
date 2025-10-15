@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BettingPremier - Live Sports Scores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Dark Theme Colors */
+            --bg-primary: #0B0F19;
+            --bg-secondary: #121826;
+            --bg-card: linear-gradient(135deg, #0B2B24 0%, #122E40 100%);
+            --accent: #00D7A6;
+            --accent-hover: #00b38a;
+            --button-primary: #3B82F6;
+            --button-hover: #2563EB;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0AEC0;
+            --text-muted: #718096;
+            --border-color: #2D3748;
+            --icon-orange: #F97316;
+            --icon-red: #EF4444;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            
+            /* Light Theme Colors */
+            --bg-primary-light: #F7FAFC;
+            --bg-secondary-light: #EDF2F7;
+            --bg-card-light: linear-gradient(135deg, #E6FFFA 0%, #EBF8FF 100%);
+            --text-primary-light: #2D3748;
+            --text-secondary-light: #4A5568;
+            --text-muted-light: #718096;
+            --border-color-light: #E2E8F0;
+            
+            /* Animation */
+            --transition: all 0.3s ease;
+            --transition-slow: all 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: var(--transition-slow);
+            overflow-x: hidden;
+        }
+
+        body.light-mode {
+            background-color: var(--bg-primary-light);
+            color: var(--text-primary-light);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 80px 1fr 350px;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        /* Header Styles */
+        header {
+            grid-column: 1 / -1;
+            background-color: var(--bg-secondary);
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        body.light-mode header {
+            background-color: var(--bg-secondary-light);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 28px;
+            color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent), #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 30px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        body.light-mode .search-bar input {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: var(--text-primary-light);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .search-bar i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: var(--bg-secondary);
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        body.light-mode .sidebar {
+            background-color: var(--bg-secondary-light);
+        }
+
+        .sidebar-item {
+            width: 100%;
+            padding: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .sidebar-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body.light-mode .sidebar-item:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-item.active {
+            background-color: rgba(0, 215, 166, 0.1);
+            border-left: 3px solid var(--accent);
+        }
+
+        .sidebar-icon {
+            font-size: 22px;
+            margin-bottom: 5px;
+            transition: var(--transition);
+            color: rgb(0, 255, 136);
+        }
+
+        .sidebar-item:hover .sidebar-icon {
+            transform: scale(1.2);
+        }
+
+        .sidebar-item.active .sidebar-icon {
+            color: white;
+        }
+
+        .sidebar-text {
+            display: none;
+            font-size: 12px;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .sidebar-item:hover .sidebar-text {
+            color: var(--text-primary);
+        }
+
+        body.light-mode .sidebar-text {
+            color: var(--text-secondary-light);
+        }
+
+        .sidebar-item:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .tooltip {
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .tooltip {
+            background-color: var(--bg-primary-light);
+            color: var(--text-primary-light);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            padding: 25px;
+            overflow-y: auto;
+            max-height: calc(100vh - 80px);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .tabs {
+            display: flex;
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 5px;
+            width: fit-content;
+        }
+
+        body.light-mode .tabs {
+            background-color: var(--bg-secondary-light);
+        }
+
+        .tab {
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background-color: var(--button-primary);
+            color: white;
+        }
+
+        .matches-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .match-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        body.light-mode .match-card {
+            background: var(--bg-card-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .match-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .match-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .match-card.live::before {
+            content: 'LIVE';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--danger);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            animation: pulse 1.5s infinite;
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        body.light-mode .match-header {
+            color: var(--text-secondary-light);
+        }
+
+        .match-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .team {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+        }
+
+        .team-logo {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        body.light-mode .team-logo {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .team-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .vs {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0 10px;
+        }
+
+        .match-score {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .score {
+            font-size: 24px;
+            font-weight: 700;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 6px;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        body.light-mode .score {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .match-time {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        body.light-mode .match-time {
+            color: var(--text-secondary-light);
+        }
+
+        .match-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background-color: var(--button-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--button-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        body.light-mode .btn-outline {
+            border-color: var(--border-color-light);
+            color: var(--text-secondary-light);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body.light-mode .btn-outline:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Updated News Section Styles */
+        .news-section {
+            margin-top: 40px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        body.light-mode .news-card {
+            background: var(--bg-card-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode .news-card:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-image {
+            height: 180px;
+            background: linear-gradient(135deg, #0B2B24 0%, #122E40 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,215,166,0.1) 0%, rgba(59,130,246,0.1) 100%);
+        }
+
+        .news-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .news-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .news-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+            flex: 1;
+        }
+
+        .news-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        body.light-mode .news-date {
+            color: var(--text-muted-light);
+        }
+
+        .news-excerpt {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        body.light-mode .news-excerpt {
+            color: var(--text-secondary-light);
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .news-sport {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .news-sport i {
+            font-size: 16px;
+        }
+
+        .news-read-more {
+            color: var(--button-primary);
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .news-read-more:hover {
+            color: var(--button-hover);
+        }
+
+        .news-highlight {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-card);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .news-highlight {
+            background: var(--bg-card-light);
+        }
+
+        .news-highlight-image {
+            height: 250px;
+            background: linear-gradient(135deg, #0B2B24 0%, #122E40 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            color: var(--accent);
+            position: relative;
+        }
+
+        .news-highlight-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .news-highlight-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .news-highlight-title {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .news-highlight-excerpt {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        body.light-mode .news-highlight-excerpt {
+            color: var(--text-secondary-light);
+        }
+
+        /* Blog Section Styles */
+        .blog-section {
+            padding: 25px;
+            background-color: var(--bg-secondary);
+            overflow-y: auto;
+            max-height: calc(100vh - 80px);
+            transition: var(--transition);
+        }
+
+        body.light-mode .blog-section {
+            background-color: var(--bg-secondary-light);
+        }
+
+        .blog-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .blog-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .blog-card {
+            background-color: var(--bg-primary);
+            border-radius: 10px;
+            padding: 15px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        body.light-mode .blog-card {
+            background-color: var(--bg-primary-light);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: var(--text-secondary);
+        }
+
+        body.light-mode .blog-image {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-content h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        body.light-mode .blog-meta {
+            color: var(--text-muted-light);
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 80px 1fr;
+            }
+            
+            .blog-section {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .news-highlight {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-highlight-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .search-bar {
+                margin: 0 15px;
+                max-width: 300px;
+            }
+            
+            .matches-container, .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="logo-text">BettingPremier</div>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search matches, teams, or leagues...">
+                <i class="fas fa-search"></i>
+            </div>
+            
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-item active" data-sport="all">
+                <div class="sidebar-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="sidebar-text">All Sports</div>
+                <div class="tooltip">All Sports</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="football">
+                <div class="sidebar-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="sidebar-text">Football</div>
+                <div class="tooltip">Football</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="basketball">
+                <div class="sidebar-icon">
+                    <i class="fas fa-basketball-ball"></i>
+                </div>
+                <div class="sidebar-text">Basketball</div>
+                <div class="tooltip">Basketball</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="baseball">
+                <div class="sidebar-icon">
+                    <i class="fas fa-baseball-ball"></i>
+                </div>
+                <div class="sidebar-text">Baseball</div>
+                <div class="tooltip">Baseball</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="hockey">
+                <div class="sidebar-icon">
+                    <i class="fas fa-hockey-puck"></i>
+                </div>
+                <div class="sidebar-text">Ice Hockey</div>
+                <div class="tooltip">Ice Hockey</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="volleyball">
+                <div class="sidebar-icon">
+                    <i class="fas fa-volleyball-ball"></i>
+                </div>
+                <div class="sidebar-text">Volleyball</div>
+                <div class="tooltip">Volleyball</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="rugby">
+                <div class="sidebar-icon">
+                    <i class="fas fa-football-ball"></i>
+                </div>
+                <div class="sidebar-text">Rugby</div>
+                <div class="tooltip">Rugby</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="handball">
+                <div class="sidebar-icon">
+                    <i class="fas fa-hand-rock"></i>
+                </div>
+                <div class="sidebar-text">Handball</div>
+                <div class="tooltip">Handball</div>
+            </div>
+            
+            <div class="sidebar-item" data-sport="major">
+                <div class="sidebar-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="sidebar-text">Major Leagues</div>
+                <div class="tooltip">Major Leagues</div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="section-header">
+                <h1 class="section-title">Football Matches</h1>
+                
+                <div class="tabs">
+                    <div class="tab active">All</div>
+                    <div class="tab">Live</div>
+                    <div class="tab">Upcoming</div>
+                    <div class="tab">Finished</div>
+                </div>
+            </div>
+            
+            <div class="matches-container">
+                <!-- Match Card 1 -->
+                <div class="match-card live fade-in">
+                    <div class="match-header">
+                        <span>Premier League</span>
+                        <span>45'</span>
+                    </div>
+                    
+                    <div class="match-teams">
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="team-name">Arsenal</div>
+                        </div>
+                        
+                        <div class="vs">VS</div>
+                        
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="team-name">Chelsea</div>
+                        </div>
+                    </div>
+                    
+                    <div class="match-score">
+                        <div class="score">2</div>
+                        <div class="score">1</div>
+                    </div>
+                    
+                    <div class="match-time">Second Half</div>
+                    
+                    <div class="match-actions">
+                        <button class="btn btn-outline">Details</button>
+                        <button class="btn btn-primary">Bet Now</button>
+                    </div>
+                </div>
+                
+                <!-- Match Card 2 -->
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span>La Liga</span>
+                        <span>Tomorrow, 20:00</span>
+                    </div>
+                    
+                    <div class="match-teams">
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="team-name">Barcelona</div>
+                        </div>
+                        
+                        <div class="vs">VS</div>
+                        
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="team-name">Real Madrid</div>
+                        </div>
+                    </div>
+                    
+                    <div class="match-score">
+                        <div class="score">-</div>
+                        <div class="score">-</div>
+                    </div>
+                    
+                    <div class="match-time">El Clásico</div>
+                    
+                    <div class="match-actions">
+                        <button class="btn btn-outline">Details</button>
+                        <button class="btn btn-primary">Bet Now</button>
+                    </div>
+                </div>
+                
+                <!-- Match Card 3 -->
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span>NBA</span>
+                        <span>Today, 22:30</span>
+                    </div>
+                    
+                    <div class="match-teams">
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-basketball-ball"></i>
+                            </div>
+                            <div class="team-name">Lakers</div>
+                        </div>
+                        
+                        <div class="vs">VS</div>
+                        
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-basketball-ball"></i>
+                            </div>
+                            <div class="team-name">Warriors</div>
+                        </div>
+                    </div>
+                    
+                    <div class="match-score">
+                        <div class="score">-</div>
+                        <div class="score">-</div>
+                    </div>
+                    
+                    <div class="match-time">Conference Finals</div>
+                    
+                    <div class="match-actions">
+                        <button class="btn btn-outline">Details</button>
+                        <button class="btn btn-primary">Bet Now</button>
+                    </div>
+                </div>
+                
+                <!-- Match Card 4 -->
+                <div class="match-card fade-in">
+                    <div class="match-header">
+                        <span>NHL</span>
+                        <span>Live - 2nd Period</span>
+                    </div>
+                    
+                    <div class="match-teams">
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-hockey-puck"></i>
+                            </div>
+                            <div class="team-name">Maple Leafs</div>
+                        </div>
+                        
+                        <div class="vs">VS</div>
+                        
+                        <div class="team">
+                            <div class="team-logo">
+                                <i class="fas fa-hockey-puck"></i>
+                            </div>
+                            <div class="team-name">Bruins</div>
+                        </div>
+                    </div>
+                    
+                    <div class="match-score">
+                        <div class="score">3</div>
+                        <div class="score">2</div>
+                    </div>
+                    
+                    <div class="match-time">Power Play</div>
+                    
+                    <div class="match-actions">
+                        <button class="btn btn-outline">Details</button>
+                        <button class="btn btn-primary">Bet Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Updated News Section -->
+            <div class="news-section">
+                <div class="section-header">
+                    <h2 class="section-title">Latest News</h2>
+                </div>
+                
+                <div class="news-grid">
+                    <!-- Highlight News Card -->
+                    <div class="news-highlight fade-in">
+                        <div class="news-highlight-image">
+                            <i class="fas fa-trophy"></i>
+                            <div class="news-badge">Featured</div>
+                        </div>
+                        <div class="news-highlight-content">
+                            <div class="news-highlight-badge">Championship</div>
+                            <h3 class="news-highlight-title">FLYWEIGHT TITLE: Juarez vs Plata - Fatal Clash</h3>
+                            <p class="news-highlight-excerpt">WBC Female Light Flyweight Championship between Lourdes Juarez and Yester Nery Plata. The entire thing runs over and over, and we are clearly not holding things back.</p>
+                            <div class="news-footer">
+                                <div class="news-sport">
+                                    <i class="fas fa-boxing-glove"></i>
+                                    <span>Boxing</span>
+                                </div>
+                                <a href="#" class="news-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 1 -->
+                    <div class="news-card fade-in">
+                        <div class="news-image">
+                            <i class="fas fa-hockey-puck"></i>
+                            <div class="news-badge">New</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-header">
+                                <h3 class="news-title">NHL 2025-26 Matchups: Predictions and Injury Updates</h3>
+                                <span class="news-date">OCT 18</span>
+                            </div>
+                            <p class="news-excerpt">The entire thing runs over and over, and we are clearly not holding things back, and waiting for miracles to happen in the NHL 2025-26 season.</p>
+                            <div class="news-footer">
+                                <div class="news-sport">
+                                    <i class="fas fa-hockey-puck"></i>
+                                    <span>Ice Hockey</span>
+                                </div>
+                                <a href="#" class="news-read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 2 -->
+                    <div class="news-card fade-in">
+                        <div class="news-image">
+                            <i class="fas fa-baseball-ball"></i>
+                            <div class="news-badge">Hot</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-header">
+                                <h3 class="news-title">MLB League Championship Series: Stats and Predictions</h3>
+                                <span class="news-date">OCT 17</span>
+                            </div>
+                            <p class="news-excerpt">MLB League Championship Series stats and predictions. The entire thing runs over and over, and we are clearly not holding things back.</p>
+                            <div class="news-footer">
+                                <div class="news-sport">
+                                    <i class="fas fa-baseball-ball"></i>
+                                    <span>Baseball</span>
+                                </div>
+                                <a href="#" class="news-read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card 3 -->
+                    <div class="news-card fade-in">
+                        <div class="news-image">
+                            <i class="fas fa-basketball-ball"></i>
+                            <div class="news-badge">Update</div>
+                        </div>
+                        <div class="news-content">
+                            <div class="news-header">
+                                <h3 class="news-title">NBA Season Preview: Rookies to Watch This Year</h3>
+                                <span class="news-date">OCT 16</span>
+                            </div>
+                            <p class="news-excerpt">A look at the most promising rookies entering the NBA this season and which teams made the best draft picks.</p>
+                            <div class="news-footer">
+                                <div class="news-sport">
+                                    <i class="fas fa-basketball-ball"></i>
+                                    <span>Basketball</span>
+                                </div>
+                                <a href="#" class="news-read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blog Section -->
+        <div class="blog-section">
+            <h2 class="blog-title">Trending News</h2>
+            
+            <div class="blog-list">
+                <!-- Blog Post 1 -->
+                <div class="blog-card fade-in">
+                    <div class="blog-image">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Champions League Quarterfinals Preview: Who Will Advance?</h3>
+                        <p>Analysis of the upcoming Champions League matches and predictions for which teams will make it to the semifinals.</p>
+                        <div class="blog-meta">
+                            <span>Football</span>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-card fade-in">
+                    <div class="blog-image">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>NBA Playoffs: Surprise Teams That Could Make a Deep Run</h3>
+                        <p>Looking at underdog teams that have the potential to surprise everyone in the NBA playoffs.</p>
+                        <div class="blog-meta">
+                            <span>Basketball</span>
+                            <span>5 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-card fade-in">
+                    <div class="blog-image">
+                        <i class="fas fa-hockey-puck"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>NHL Stanley Cup Favorites After the Trade Deadline</h3>
+                        <p>Which teams improved the most at the trade deadline and are now favorites to win the Stanley Cup?</p>
+                        <div class="blog-meta">
+                            <span>Ice Hockey</span>
+                            <span>1 day ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 4 -->
+                <div class="blog-card fade-in">
+                    <div class="blog-image">
+                        <i class="fas fa-baseball-ball"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>MLB Season Predictions: Division Winners and Awards</h3>
+                        <p>Our experts predict which teams will win each division and who will take home the major awards this MLB season.</p>
+                        <div class="blog-meta">
+                            <span>Baseball</span>
+                            <span>2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+        
+        // Tab Switching
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+        
+        // Sidebar Item Selection
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', () => {
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // In a real app, this would update the main content based on the selected sport
+                const sport = item.getAttribute('data-sport');
+                document.querySelector('.section-title').textContent = 
+                    sport === 'all' ? 'All Sports' : 
+                    sport === 'football' ? 'Football Matches' :
+                    sport === 'basketball' ? 'Basketball Matches' :
+                    sport === 'baseball' ? 'Baseball Matches' :
+                    sport === 'hockey' ? 'Ice Hockey Matches' :
+                    sport === 'volleyball' ? 'Volleyball Matches' :
+                    sport === 'rugby' ? 'Rugby Matches' :
+                    sport === 'handball' ? 'Handball Matches' :
+                    sport === 'major' ? 'Major Leagues' : 'Matches';
+            });
+        });
+        
+        // Add animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.match-card, .blog-card, .news-card, .news-highlight').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
