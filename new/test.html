@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Matches</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121418;
+            color: #e4e6eb;
+            padding: 20px;
+        }
+
+        .matches-list {
+            background: #111215;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            
+            &__header {
+                padding: 20px;
+                border-bottom: 1px solid #22242a;
+                
+                & .matches-list__title {
+                    font-size: 22px;
+                    font-weight: 700;
+                    color: #fff;
+                    margin-bottom: 8px;
+                }
+                
+                & .matches-list__divider {
+                    width: 60px;
+                    height: 3px;
+                    background: #00B74A;
+                    border-radius: 2px;
+                }
+            }
+            
+            &__content {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .league-section {
+            padding: 0;
+            border-bottom: 1px solid #22242a;
+            
+            &:last-child {
+                border-bottom: none;
+            }
+            
+            &__header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 15px 20px;
+                background: #1a1c22;
+                cursor: pointer;
+                transition: background 0.2s ease;
+                
+                &:hover {
+                    background: #1f2128;
+                }
+                
+                & .league-section__flag {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+                
+                & .league-section__info {
+                    flex: 1;
+                    
+                    & .league-section__country {
+                        font-size: 14px;
+                        color: #aaa;
+                        margin-bottom: 2px;
+                    }
+                    
+                    & .league-section__name {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #fff;
+                    }
+                }
+                
+                & .league-section__toggle {
+                    color: #aaa;
+                    font-size: 18px;
+                    transition: transform 0.3s ease;
+                }
+                
+                &.league-section__header--open .league-section__toggle {
+                    transform: rotate(45deg);
+                }
+            }
+            
+            &__matches {
+                display: none;
+                padding: 10px 0;
+                
+                &.league-section__matches--visible {
+                    display: block;
+                }
+            }
+        }
+
+        .match-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 15px;
+            padding: 12px 20px;
+            transition: background 0.2s ease;
+            
+            &:hover {
+                background: #1b1c20;
+            }
+            
+            &:not(:last-child) {
+                border-bottom: 1px solid #22242a;
+            }
+            
+            &__time {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                
+                & .match-item__date {
+                    font-size: 13px;
+                    color: #aaa;
+                    margin-bottom: 4px;
+                }
+                
+                & .match-item__clock {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #fff;
+                }
+                
+                & .match-item__status {
+                    font-size: 11px;
+                    color: #00B74A;
+                    margin-top: 4px;
+                    font-weight: 500;
+                }
+            }
+            
+            &__details {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            &__team {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                &:first-child {
+                    padding-bottom: 6px;
+                    border-bottom: 1px solid #2a2c33;
+                }
+                
+                & .match-item__team-info {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    
+                    & .match-item__team-logo {
+                        width: 22px;
+                        height: 22px;
+                        border-radius: 50%;
+                        object-fit: contain;
+                    }
+                    
+                    & .match-item__team-name {
+                        font-size: 14px;
+                        color: #fff;
+                    }
+                }
+                
+                & .match-item__score {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #fff;
+                }
+            }
+            
+            &__vs {
+                text-align: center;
+                font-size: 11px;
+                color: #777;
+                margin: 2px 0;
+            }
+            
+            &.match-item--live {
+                & .match-item__status {
+                    color: #FF4757;
+                    animation: pulse 1.5s infinite;
+                }
+                
+                & .match-item__score {
+                    color: #00B74A;
+                }
+            }
+            
+            &.match-item--finished {
+                & .match-item__status {
+                    color: #aaa;
+                }
+            }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 600px) {
+            .match-item {
+                grid-template-columns: 80px 1fr;
+                gap: 10px;
+                padding: 10px 15px;
+                
+                &__time {
+                    & .match-item__date {
+                        font-size: 12px;
+                    }
+                    
+                    & .match-item__clock {
+                        font-size: 13px;
+                    }
+                }
+                
+                &__team {
+                    & .match-item__team-info {
+                        & .match-item__team-name {
+                            font-size: 13px;
+                        }
+                    }
+                    
+                    & .match-item__score {
+                        font-size: 13px;
+                    }
+                }
+            }
+            
+            .league-section__header {
+                padding: 12px 15px;
+                
+                & .league-section__info {
+                    & .league-section__country {
+                        font-size: 13px;
+                    }
+                    
+                    & .league-section__name {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matches-list">
+        <div class="matches-list__header">
+            <h3 class="matches-list__title">Today's Matches</h3>
+            <div class="matches-list__divider"></div>
+        </div>
+        <div class="matches-list__content">
+            <!-- Premier League Section -->
+            <div class="league-section">
+                <div class="league-section__header" onclick="toggleLeague(this)">
+                    <img src="https://flagcdn.com/w40/gb-eng.png" alt="England Flag" class="league-section__flag">
+                    <div class="league-section__info">
+                        <div class="league-section__country">England</div>
+                        <div class="league-section__name">Premier League</div>
+                    </div>
+                    <div class="league-section__toggle">+</div>
+                </div>
+                <div class="league-section__matches">
+                    <!-- Match 1 -->
+                    <div class="match-item match-item--live">
+                        <div class="match-item__time">
+                            <div class="match-item__date">Today</div>
+                            <div class="match-item__clock">15:00</div>
+                            <div class="match-item__status">LIVE 65'</div>
+                        </div>
+                        <div class="match-item__details">
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://resources.premierleague.com/premierleague/badges/50/t3.png" alt="Arsenal" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Arsenal</span>
+                                </div>
+                                <div class="match-item__score">2</div>
+                            </div>
+                            <div class="match-item__vs">vs</div>
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://resources.premierleague.com/premierleague/badges/50/t11.png" alt="Chelsea" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Chelsea</span>
+                                </div>
+                                <div class="match-item__score">1</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Match 2 -->
+                    <div class="match-item">
+                        <div class="match-item__time">
+                            <div class="match-item__date">Today</div>
+                            <div class="match-item__clock">17:30</div>
+                            <div class="match-item__status">UPCOMING</div>
+                        </div>
+                        <div class="match-item__details">
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://resources.premierleague.com/premierleague/badges/50/t14.png" alt="Liverpool" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Liverpool</span>
+                                </div>
+                                <div class="match-item__score">-</div>
+                            </div>
+                            <div class="match-item__vs">vs</div>
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://resources.premierleague.com/premierleague/badges/50/t1.png" alt="Man City" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Man City</span>
+                                </div>
+                                <div class="match-item__score">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- La Liga Section -->
+            <div class="league-section">
+                <div class="league-section__header" onclick="toggleLeague(this)">
+                    <img src="https://flagcdn.com/w40/es.png" alt="Spain Flag" class="league-section__flag">
+                    <div class="league-section__info">
+                        <div class="league-section__country">Spain</div>
+                        <div class="league-section__name">La Liga</div>
+                    </div>
+                    <div class="league-section__toggle">+</div>
+                </div>
+                <div class="league-section__matches">
+                    <!-- Match 1 -->
+                    <div class="match-item match-item--finished">
+                        <div class="match-item__time">
+                            <div class="match-item__date">Today</div>
+                            <div class="match-item__clock">20:00</div>
+                            <div class="match-item__status">FINISHED</div>
+                        </div>
+                        <div class="match-item__details">
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/83.png" alt="Barcelona" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Barcelona</span>
+                                </div>
+                                <div class="match-item__score">3</div>
+                            </div>
+                            <div class="match-item__vs">vs</div>
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/86.png" alt="Real Madrid" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Real Madrid</span>
+                                </div>
+                                <div class="match-item__score">2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Serie A Section -->
+            <div class="league-section">
+                <div class="league-section__header" onclick="toggleLeague(this)">
+                    <img src="https://flagcdn.com/w40/it.png" alt="Italy Flag" class="league-section__flag">
+                    <div class="league-section__info">
+                        <div class="league-section__country">Italy</div>
+                        <div class="league-section__name">Serie A</div>
+                    </div>
+                    <div class="league-section__toggle">+</div>
+                </div>
+                <div class="league-section__matches">
+                    <!-- Match 1 -->
+                    <div class="match-item">
+                        <div class="match-item__time">
+                            <div class="match-item__date">Today</div>
+                            <div class="match-item__clock">18:45</div>
+                            <div class="match-item__status">UPCOMING</div>
+                        </div>
+                        <div class="match-item__details">
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/103.png" alt="Juventus" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Juventus</span>
+                                </div>
+                                <div class="match-item__score">-</div>
+                            </div>
+                            <div class="match-item__vs">vs</div>
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/102.png" alt="AC Milan" class="match-item__team-logo">
+                                    <span class="match-item__team-name">AC Milan</span>
+                                </div>
+                                <div class="match-item__score">-</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Match 2 -->
+                    <div class="match-item match-item--live">
+                        <div class="match-item__time">
+                            <div class="match-item__date">Today</div>
+                            <div class="match-item__clock">16:30</div>
+                            <div class="match-item__status">LIVE 42'</div>
+                        </div>
+                        <div class="match-item__details">
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/104.png" alt="Inter" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Inter</span>
+                                </div>
+                                <div class="match-item__score">1</div>
+                            </div>
+                            <div class="match-item__vs">vs</div>
+                            <div class="match-item__team">
+                                <div class="match-item__team-info">
+                                    <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/107.png" alt="Napoli" class="match-item__team-logo">
+                                    <span class="match-item__team-name">Napoli</span>
+                                </div>
+                                <div class="match-item__score">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLeague(header) {
+            const matchesSection = header.nextElementSibling;
+            const isVisible = matchesSection.classList.contains('league-section__matches--visible');
+            
+            // Close all other sections
+            document.querySelectorAll('.league-section__matches--visible').forEach(section => {
+                section.classList.remove('league-section__matches--visible');
+            });
+            
+            document.querySelectorAll('.league-section__header--open').forEach(header => {
+                header.classList.remove('league-section__header--open');
+            });
+            
+            // Toggle the clicked section if it wasn't already open
+            if (!isVisible) {
+                matchesSection.classList.add('league-section__matches--visible');
+                header.classList.add('league-section__header--open');
+            }
+        }
+        
+        // Open the first league by default
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstLeagueHeader = document.querySelector('.league-section__header');
+            if (firstLeagueHeader) {
+                toggleLeague(firstLeagueHeader);
+            }
+        });
+    </script>
+</body>
+</html>

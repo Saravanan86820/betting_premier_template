@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betting Premier</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-wrapper">
+        <header class="header">
+            <a href="/home.html">
+                <div class="header__img-con">
+                    <img src="img/logo-1.svg" alt="logo">
+                </div>
+            </a>
+                
+            <div class="header__search-con">
+                <img src="img/search.svg" alt="search-icon">
+                <input type="text" placeholder="Search" />
+            </div>
+                
+            <div class="header__settings-con">
+                <a href="#">    
+                    <div class="header__items header__items--latest">
+                        <img src="img/latest.svg" alt="latest">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="header__items header__items--setting">
+                        <img src="img/setting.svg" alt="setting">   
+                    </div>
+                </a> 
+                <div class="header__dark-mode-toggle">
+                    <img src="img/dark-mode-toggle.svg" alt="dark-mode-toggle">
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="sidebar">
+                <a href="/football.html">
+                    <div class="sidebar__icons sidebar__icons--active">
+                        <img src="img/Side-icons/football.svg" alt="Football-icon">
+                        <div class="sidebar__tooltip">Football</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/ice-hockey.svg" alt="ice-hockey-icon">
+                        <div class="sidebar__tooltip">Ice Hockey</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/baseball.svg" alt="baseball-icon">
+                        <div class="sidebar__tooltip">Baseball</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/basketball.svg" alt="basketball-icon">
+                        <div class="sidebar__tooltip">BasketBall</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/rugby.svg" alt="rugby-icon">
+                        <div class="sidebar__tooltip">Rugby</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/volleyball.svg" alt="volleyball-icon">
+                        <div class="sidebar__tooltip">Volleyball</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/handball.svg" alt="handball-icon">
+                        <div class="sidebar__tooltip">Handball</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="main">
+                <div class="slideshow">
+                    <div class="slideshow__slides">
+                        <img src="img/News/1.jpg" class="slideshow__slide" />
+                        <img src="img/News/5.jpg" class="slideshow__slide" />
+                        <img src="img/News/4.jpg" class="slideshow__slide" />
+                    </div>
+                    <div class="slideshow__dots">
+                        <span class="slideshow__dot"></span>
+                        <span class="slideshow__dot"></span>
+                        <span class="slideshow__dot"></span>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="button-group__btn button-group__btn--active">All</button>
+                    <button class="button-group__btn">Live</button>
+                    <button class="button-group__btn">Upcoming</button>
+                </div>
+
+                <div class="live-matches">
+                    <!-- Group Header: France - Ligue 1 -->
+                    <div class="league-group">
+                        <div class="league-group__header">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                            <div>
+                                <div class="league-group__country-name">France</div>
+                                <div class="league-group__league-name-title">Ligue 1</div>
+                            </div>
+                        </div>
+                        <div class="league-group__divider"></div>
+                        <div class="league-group__matches">
+                            <!-- Match Cards -->
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Live</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>2</span>
+                                        <span>:</span>
+                                        <span>1</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">72'</div>
+                            </div>
+                            
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Upcoming</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>–</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">Kickoff: 8:00 PM</div>
+                            </div>
+                            
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Upcoming</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>–</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">Kickoff: 8:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Group Header: Italy - Serie A -->
+                    <div class="league-group">
+                        <div class="league-group__header">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/0/03/Flag_of_Italy.svg" alt="Italy Flag" />
+                            <div>
+                                <div class="league-group__country-name">Italy</div>
+                                <div class="league-group__league-name-title">Serie A</div>
+                            </div>
+                        </div>
+                        <div class="league-group__divider"></div>
+                        <div class="league-group__matches">
+                            <!-- Match Cards -->
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Live</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>2</span>
+                                        <span>:</span>
+                                        <span>1</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">72'</div>
+                            </div>
+                            
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Upcoming</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>–</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">Kickoff: 8:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="league-group">
+                        <div class="league-group__header">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                            <div>
+                                <div class="league-group__country-name">France</div>
+                                <div class="league-group__league-name-title">Ligue 1</div>
+                            </div>
+                        </div>
+                        <div class="league-group__divider"></div>
+                        <div class="league-group__matches">
+                            <!-- Match Cards -->
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Live</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>2</span>
+                                        <span>:</span>
+                                        <span>1</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">72'</div>
+                            </div>
+                            
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Upcoming</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>–</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">Kickoff: 8:00 PM</div>
+                            </div>
+
+                            <div class="match-card">
+                                <div class="match-card__header">
+                                    <span class="match-card__live-badge">Upcoming</span>
+                                    <span class="match-card__match-date">15 October 2025</span>
+                                </div>
+                                
+                                <div class="match-card__teams">
+                                    <div class="match-card__team">
+                                        <img src="img/psg.png" alt="PSG Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">PSG</div>
+                                    </div>
+                                    <div class="match-card__score">
+                                        <span>–</span>
+                                    </div>
+                                    <div class="match-card__team">
+                                        <img src="img/strasbourg.png" alt="Strasbourg Logo" class="match-card__team-logo">
+                                        <div class="match-card__team-name">Strasbourg</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-card__match-time">Kickoff: 8:00 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <!-- Top Leagues Section -->
+                <div class="top-leagues-section">
+                    <div class="top-leagues-section__header">
+                        <h2>Top Leagues</h2>
+                        <div class="top-leagues-section__divider"></div>
+                    </div>
+                    <div class="top-leagues-section__top-leagues">
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/serie-a-6700e7c2ec98a866.png" alt="Serie A" class="top-leagues-section__league-logo">
+                            <span>Serie A</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/premier-league-670512275ca0f775.png" alt="Premier League" class="top-leagues-section__league-logo">
+                            <span>Premier League</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/bundesliga-6700e838dcbfe410.png" alt="Bundesliga" class="top-leagues-section__league-logo">
+                            <span>Bundesliga</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/la-liga-6700ea36273d0519.png" alt="La Liga" class="top-leagues-section__league-logo">
+                            <span>La Liga</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/ligue-1-6700df567780c767.png" alt="Ligue 1" class="top-leagues-section__league-logo">
+                            <span>Ligue 1</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news-section">
+                    <div class="news-section__header">
+                        <h2>Recent Blog</h2>
+                        <div class="news-section__divider"></div>
+                    </div>
+                    <div class="news-section__news">
+                        <div class="news-section__news-card">
+                            <div class="news-section__news-image">
+                                <img src="img/News/1.jpg" alt="NHL Matchups">
+                            </div>
+                            <div class="news-section__news-content">
+                                <p class="news-section__news-date">14 October 2025</p>
+                                <h3 class="news-section__news-title">NHL 2025-26 Matchups | Predictions and Injury</h3>
+                                <p class="news-section__news-desc">The entire thing runs over and over, and we are clearly not holding things back</p>
+                            </div>
+                        </div>
+                        
+                        <div class="news-section__news-card">
+                            <div class="news-section__news-image">
+                                <img src="img/News/2.jpg" alt="Boxing Championship">
+                            </div>
+                            <div class="news-section__news-content">
+                                <p class="news-section__news-date">15 October 2025</p>
+                                <h3 class="news-section__news-title">WBC Female Light Flyweight Championship</h3>
+                                <p class="news-section__news-desc">Battle ready and only the most skilled will rise tonight</p>
+                            </div>
+                        </div>
+                        
+                        <div class="news-section__news-card">
+                            <div class="news-section__news-image">
+                                <img src="img/News/3.jpg" alt="MLB League">
+                            </div>
+                            <div class="news-section__news-content">
+                                <p class="news-section__news-date">16 October 2025</p>
+                                <h3 class="news-section__news-title">MLB League Championship Series</h3>
+                                <p class="news-section__news-desc">There's no time for rest — one inning could make the ring</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leagues-container">
+                    <div class="leagues-container__title">
+                        <h2>All Leagues</h2>
+                        <div class="leagues-container__divider"></div>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ar.png" alt="Argentina Flag">
+                                <span>Argentina</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Primera B Metropolitana</li>
+                            <li>Primera Nacional</li>
+                            <li>Primera C</li>
+                            <li>Primera D</li>
+                            <li>Torneo Federal A</li>
+                            <li>Liga Profesional Argentina</li>
+                            <li>Copa Argentina</li>
+                            <li>Super Copa International</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/au.png" alt="Australia Flag">
+                                <span>Australia</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>A-League</li>
+                            <li>FFA Cup</li>
+                            <li>National Premier Leagues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/at.png" alt="Austria Flag">
+                                <span>Austria</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Bundesliga</li>
+                            <li>ÖFB Cup</li>
+                            <li>2. Liga</li>
+                        </ul>
+                    </div>
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ar.png" alt="Argentina Flag">
+                                <span>Argentina</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Primera B Metropolitana</li>
+                            <li>Primera Nacional</li>
+                            <li>Primera C</li>
+                            <li>Primera D</li>
+                            <li>Torneo Federal A</li>
+                            <li>Liga Profesional Argentina</li>
+                            <li>Copa Argentina</li>
+                            <li>Super Copa International</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/au.png" alt="Australia Flag">
+                                <span>Australia</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>A-League</li>
+                            <li>FFA Cup</li>
+                            <li>National Premier Leagues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/at.png" alt="Austria Flag">
+                                <span>Austria</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Bundesliga</li>
+                            <li>ÖFB Cup</li>
+                            <li>2. Liga</li>
+                        </ul>
+                    </div>
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ar.png" alt="Argentina Flag">
+                                <span>Argentina</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Primera B Metropolitana</li>
+                            <li>Primera Nacional</li>
+                            <li>Primera C</li>
+                            <li>Primera D</li>
+                            <li>Torneo Federal A</li>
+                            <li>Liga Profesional Argentina</li>
+                            <li>Copa Argentina</li>
+                            <li>Super Copa International</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/au.png" alt="Australia Flag">
+                                <span>Australia</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>A-League</li>
+                            <li>FFA Cup</li>
+                            <li>National Premier Leagues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header" onclick="toggleLeagues(this)">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/at.png" alt="Austria Flag">
+                                <span>Austria</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Bundesliga</li>
+                            <li>ÖFB Cup</li>
+                            <li>2. Liga</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__top">
+            <img src="img/logo-1.svg" alt="Betting Premier Logo" class="footer__logo" />
+            <nav class="footer__nav">
+                <a href="#">Latest</a>
+                <a href="#">Football</a>
+                <a href="#">Ice Hockey</a>
+                <a href="#">Baseball</a>
+                <a href="#">BasketBall</a>
+                <a href="#">VolleyBall</a>
+            </nav>
+            
+            <p class="footer__copyright">Copyright © 2025 BettingPremier</p>
+        </div>
+        
+        <div class="footer__bottom">
+            <p>
+                18+ Only. Please gamble responsibly!
+                <strong>BeGambleAware<span style="font-size: 0.6em;">.org</span></strong>
+                &nbsp; 18+ | Erlaubt (White-list) | Suchtrisiken |
+                Hilfe unter buwei.de (ENG: Allowed (white list) | Risk of addiction |
+                Help at buwei.de.)
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleLeagues(element) {
+            const allLists = document.querySelectorAll('.leagues-container__league-list');
+            const allIcons = document.querySelectorAll('.leagues-container__toggle-icon');
+            const leagueList = element.nextElementSibling;
+            const icon = element.querySelector('.leagues-container__toggle-icon');
+            
+            // Close all other sections
+            allLists.forEach((list) => {
+                if (list !== leagueList) {
+                    list.classList.add('leagues-container__league-list--hidden');
+                }
+            });
+            
+            // Reset all icons to '+'
+            allIcons.forEach((i) => (i.textContent = '+'));
+            
+            // Toggle the clicked one
+            const isHidden = leagueList.classList.toggle('leagues-container__league-list--hidden');
+            icon.textContent = isHidden ? '+' : '−';
+        }
+    </script>
+</body>
+</html>
