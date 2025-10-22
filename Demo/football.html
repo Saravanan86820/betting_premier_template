@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betting Premier</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="temp_style.css"> -->
+</head>
+<body>
+    <div class="main-wrapper">
+        <header class="header">
+            <a href="/home.html">
+                <div class="header__img-con">
+                    <img src="img/logo-1.svg" alt="logo">
+                </div>
+            </a>
+                
+            <div class="header__search-con">
+                <img src="img/search.svg" alt="search-icon">
+                <input type="text" placeholder="Search" />
+            </div>
+                
+            <div class="header__settings-con">
+                <a href="#">    
+                    <div class="header__items header__items--latest">
+                        <img src="img/latest.svg" alt="latest">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="header__items header__items--setting">
+                        <img src="img/setting.svg" alt="setting">   
+                    </div>
+                </a> 
+                <div class="header__dark-mode-toggle">
+                    <img src="img/dark-mode-toggle.svg" alt="dark-mode-toggle">
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="sidebar">
+                <a href="/football.html">
+                    <div class="sidebar__icons sidebar__icons--active">
+                        <img src="img/Side-icons/football.svg" alt="Football-icon">
+                        <div class="sidebar__tooltip">Football</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/ice-hockey.svg" alt="ice-hockey-icon">
+                        <div class="sidebar__tooltip">Ice Hockey</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/baseball.svg" alt="baseball-icon">
+                        <div class="sidebar__tooltip">Baseball</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/basketball.svg" alt="basketball-icon">
+                        <div class="sidebar__tooltip">BasketBall</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/rugby.svg" alt="rugby-icon">
+                        <div class="sidebar__tooltip">Rugby</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/volleyball.svg" alt="volleyball-icon">
+                        <div class="sidebar__tooltip">Volleyball</div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="sidebar__icons">
+                        <img src="img/Side-icons/handball.svg" alt="handball-icon">
+                        <div class="sidebar__tooltip">Handball</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="main">
+
+                <div class="matches-layout">
+
+                    <!-- League list -->
+                    <div class="league-list">
+
+                        <div class="button-group">
+                            <button class="button-group__btn button-group__btn--active">All</button>
+                            <button class="button-group__btn">Finished</button>
+                            <button class="button-group__btn">Upcoming</button>
+                        </div>
+                    
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="1">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 65'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">2</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="2">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">20:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="3">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 45'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="4">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">22:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="1">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 65'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">2</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="2">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">20:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="3">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 45'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="4">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">22:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="1">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 65'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">2</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="2">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">20:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="3">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 45'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="4">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">22:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="1">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 65'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">2</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="2">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">20:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="3">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 45'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="4">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">22:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="1">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 65'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">2</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="2">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">20:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="league-list__items">
+                            <div class="league-list__header">
+                                <div class="league-list__flag">
+                                    <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France Flag" />
+                                </div>
+                                <div class="league-list__league-info">
+                                    <div class="league-list__country-name">France</div>
+                                    <div class="league-list__league-title">Ligue 1</div>
+                                </div>
+                            </div>
+                            <div class="league-list__matches">
+                                <!-- Live Match -->
+                                <div class="match-item match-item--live" data-match="3">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">LIVE 45'</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/psg.png" alt="PSG">
+                                                <span class="match-item__team-name">PSG</span>
+                                            </div>
+                                            <div class="match-item__score">1</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img class="match-item__team-logo" src="img/olympique.png" alt="Olympique Marseille">
+                                                <span class="match-item__team-name">Olympique Marseille</span>
+                                            </div>
+                                            <div class="match-item__score">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Upcoming Match -->
+                                <div class="match-item match-item--upcoming" data-match="4">
+                                    <div class="match-item__time">
+                                        <div class="match-item__date">Today</div>
+                                        <div class="match-item__status">22:00</div>
+                                    </div>
+                                    <div class="match-item__details">
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/lyon.png" alt="Lyon" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Lyon</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                        <div class="match-item__team">
+                                            <div class="match-item__team-info">
+                                                <img src="img/monaco.png" alt="Monaco" class="match-item__team-logo">
+                                                <span class="match-item__team-name">Monaco</span>
+                                            </div>
+                                            <div class="match-item__score">-</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                  
+                    <!-- Column 2: Match Details (wider column) -->
+                    <div class="match-details">
+                        <div class="match-details__content">
+                            <!-- Match Detail Overlay -->
+                            <div class="match-detail-overlay" id="matchDetailOverlay">
+                                <div class="match-detail-overlay__header">
+                                    <h2 class="match-detail-overlay__title">Match Details</h2>
+                                    <button class="match-detail-overlay__close-btn" id="closeMatchDetail">✕</button>
+                                </div>
+                                <div class="match-detail-overlay__content" id="matchDetailContent">
+                                    <!-- Match details will be loaded here dynamically -->
+                                </div>
+                            </div>
+                            
+                            <!-- Default content when no match is selected -->
+                            <div class="match-details__default" id="defaultMatchContent">
+                                <div class="match-slider">
+                                    <h1 class="match-slider__title">Live Football Matches</h1>
+                                    <div class="match-slider__divider"></div>
+                                    <div class="match-slider__container">
+                                        <div class="match-slider__track">
+            
+                                            <!-- Slide 1 -->
+                                            <div class="match-slider__slide">
+                                                <div class="match-card">
+                                                    <div class="match-card__header">
+                                                        <span class="match-card__live-badge">Live</span>
+                                                        <span class="match-card__match-date">15 October 2025</span>
+                                                    </div>
+                                                    
+                                                    <div class="match-card__teams">
+                                                        <div class="match-card__team">
+                                                            <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg" alt="PSG Logo" class="match-card__team-logo">
+                                                            <div class="match-card__team-name">PSG</div>
+                                                        </div>
+                                                        <div class="match-card__score">
+                                                            <span>2</span>
+                                                            <span>:</span>
+                                                            <span>1</span>
+                                                        </div>
+                                                        <div class="match-card__team">
+                                                            <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/Racing_Club_de_Strasbourg_Alsace_logo.svg" alt="Strasbourg Logo" class="match-card__team-logo">
+                                                            <div class="match-card__team-name">Strasbourg</div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="match-card__match-time">72'</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Slide 2 -->
+                                            <div class="match-slider__slide">
+                                                <div class="match-card">
+                                                    <div class="match-card__header">
+                                                        <span class="match-card__live-badge">Live</span>
+                                                        <span class="match-card__match-date">15 October 2025</span>
+                                                    </div>
+                                                    
+                                                    <div class="match-card__teams">
+                                                        <div class="match-card__team">
+                                                            <img src="https://upload.wikimedia.org/wikipedia/en/7/76/Manchester_United_FC_crest.svg" alt="Man Utd Logo" class="match-card__team-logo">
+                                                            <div class="match-card__team-name">Man Utd</div>
+                                                        </div>
+                                                        <div class="match-card__score">
+                                                            <span>1</span>
+                                                            <span>:</span>
+                                                            <span>1</span>
+                                                        </div>
+                                                        <div class="match-card__team">
+                                                            <img src="https://upload.wikimedia.org/wikipedia/en/f/f9/FC_Barcelona_%28crest%29.svg" alt="Barcelona Logo" class="match-card__team-logo">
+                                                            <div class="match-card__team-name">Barcelona</div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="match-card__match-time">56'</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Slide 3 -->
+                                            <div class="match-slider__slide">
+                                                <div class="match-card">
+                                                    <div class="match-card__header">
+                                                        <span class="match-card__live-badge">Live</span>
+                                                        <span class="match-card__match-date">15 October 2025</span>
+                                                    </div>
+                                                    
+                                                    <div class="match-card__teams">
+                                                        <div class="match-card__team">
+                                                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/FC_Bayern_M%C3%BCnchen_logo_%282017%29.svg" alt="Bayern Logo" class="match-card__team-logo">
+                                                            <div class="match-card__team-name">Bayern</div>
+                                                        </div>
+                                                        <div class="match-card__score">
+                                                            <span>3</span>
+                                                            <span>:</span>
+                                                            <span>0</span>
+                                                        </div>
+                                                        <div class="match-card__team">
+                                                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_AC_Milan.svg" alt="AC Milan Logo" class="match-card__team-logo">
+                                                            <div class="match-card__team-name">AC Milan</div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="match-card__match-time">78'</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="match-slider__nav">
+                                        <button class="match-slider__button match-slider__button--prev">Previous</button>
+                                        <button class="match-slider__button match-slider__button--next">Next</button>
+                                    </div>
+                                    
+                                    <div class="match-slider__indicators">
+                                        <div class="match-slider__indicator match-slider__indicator--active"></div>
+                                        <div class="match-slider__indicator"></div>
+                                        <div class="match-slider__indicator"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-details__header">
+                                    <h3 class="match-details__title">Match Details</h3>
+                                    <div class="match-details__divider"></div>
+                                </div>
+
+                                <div class="match-overview">
+                                    <div class="match-overview__teams">
+                                        <div class="match-overview__team">
+                                            <img src="img/teams/team-a.png" alt="Team A" class="match-overview__team-logo">
+                                            <span class="match-overview__team-name">Team A</span>
+                                        </div>
+                                        <div class="match-overview__score">
+                                            <span class="match-overview__score-home">2</span>
+                                            <span class="match-overview__vs">-</span>
+                                            <span class="match-overview__score-away">1</span>
+                                        </div>
+                                        <div class="match-overview__team">
+                                            <img src="img/teams/team-b.png" alt="Team B" class="match-overview__team-logo">
+                                            <span class="match-overview__team-name">Team B</span>
+                                        </div>
+                                    </div>
+                                    <div class="match-overview__status">
+                                        <span class="match-overview__minute">65'</span>
+                                        <span class="match-overview__live">LIVE</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="match-stats">
+                                    <h4 class="match-stats__title">Statistics</h4>
+                                    <div class="match-stats__item">
+                                        <span class="match-stats__label">Possession</span>
+                                        <div class="match-stats__bar">
+                                            <div class="match-stats__bar-home" style="width: 60%">60%</div>
+                                            <div class="match-stats__bar-away" style="width: 40%">40%</div>
+                                        </div>
+                                    </div>
+                                    <div class="match-stats__item">
+                                        <span class="match-stats__label">Shots</span>
+                                        <div class="match-stats__bar">
+                                            <div class="match-stats__bar-home" style="width: 55%">8</div>
+                                            <div class="match-stats__bar-away" style="width: 45%">6</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3: Advertisement -->
+                    <div class="advertisement">
+                        <div class="advertisement__header">
+                            <h3 class="advertisement__title">Sponsored</h3>
+                            <div class="advertisement__divider"></div>
+                        </div>
+                        <div class="advertisement__content">
+                            <div class="advertisement__banner">
+                                <img src="img/ads/bet365-banner.jpg" alt="Betting Offer" class="advertisement__image">
+                                <div class="advertisement__text">
+                                    <h4 class="advertisement__offer">Get 100% Bonus up to $100</h4>
+                                    <p class="advertisement__description">Sign up now and claim your welcome bonus!</p>
+                                    <button class="advertisement__cta">Claim Offer</button>
+                                </div>
+                            </div>
+                            
+                            <div class="advertisement__banner">
+                                <img src="img/ads/william-hill-banner.jpg" alt="Special Offer" class="advertisement__image">
+                                <div class="advertisement__text">
+                                    <h4 class="advertisement__offer">Enhanced Odds</h4>
+                                    <p class="advertisement__description">Best odds guaranteed on all matches</p>
+                                    <button class="advertisement__cta">Bet Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <!-- Top Leagues Section -->
+                <div class="top-leagues-section">
+                    <div class="top-leagues-section__header">
+                        <h2>Top Leagues</h2>
+                        <div class="top-leagues-section__divider"></div>
+                    </div>
+                    <div class="top-leagues-section__top-leagues">
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/serie-a-6700e7c2ec98a866.png" alt="Serie A" class="top-leagues-section__league-logo">
+                            <span>Serie A</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/premier-league-670512275ca0f775.png" alt="Premier League" class="top-leagues-section__league-logo">
+                            <span>Premier League</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/bundesliga-6700e838dcbfe410.png" alt="Bundesliga" class="top-leagues-section__league-logo">
+                            <span>Bundesliga</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/la-liga-6700ea36273d0519.png" alt="La Liga" class="top-leagues-section__league-logo">
+                            <span>La Liga</span>
+                        </div>
+                        <div class="top-leagues-section__league">
+                            <img src="img/leagues/ligue-1-6700df567780c767.png" alt="Ligue 1" class="top-leagues-section__league-logo">
+                            <span>Ligue 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leagues-container">
+                    <div class="leagues-container__title">
+                        <h2>All Leagues</h2>
+                        <div class="leagues-container__divider"></div>
+                    </div>
+                    
+                    <!-- A -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ar.png" alt="Argentina Flag">
+                                <span>Argentina</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Liga Profesional Argentina</li>
+                            <li>Primera Nacional</li>
+                            <li>Primera B Metropolitana</li>
+                            <li>Primera C</li>
+                            <li>Primera D</li>
+                            <li>Torneo Federal A</li>
+                            <li>Copa Argentina</li>
+                            <li>Super Copa Argentina</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/au.png" alt="Australia Flag">
+                                <span>Australia</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>A-League</li>
+                            <li>A-League Women</li>
+                            <li>Australia Cup</li>
+                            <li>National Premier Leagues</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/at.png" alt="Austria Flag">
+                                <span>Austria</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Bundesliga</li>
+                            <li>2. Liga</li>
+                            <li>ÖFB Cup</li>
+                            <li>Regionalliga</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- B -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/be.png" alt="Belgium Flag">
+                                <span>Belgium</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>First Division A</li>
+                            <li>First Division B</li>
+                            <li>Belgian Cup</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/br.png" alt="Brazil Flag">
+                                <span>Brazil</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Serie A</li>
+                            <li>Serie B</li>
+                            <li>Copa do Brasil</li>
+                            <li>Campeonato Carioca</li>
+                            <li>Campeonato Paulista</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- C -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/cl.png" alt="Chile Flag">
+                                <span>Chile</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Primera División</li>
+                            <li>Primera B</li>
+                            <li>Copa Chile</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/cn.png" alt="China Flag">
+                                <span>China</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Super League</li>
+                            <li>League One</li>
+                            <li>FA Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/co.png" alt="Colombia Flag">
+                                <span>Colombia</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Primera A</li>
+                            <li>Primera B</li>
+                            <li>Copa Colombia</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/hr.png" alt="Croatia Flag">
+                                <span>Croatia</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>First Football League</li>
+                            <li>Croatian Cup</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/cz.png" alt="Czech Republic Flag">
+                                <span>Czech Republic</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>First League</li>
+                            <li>National Football League</li>
+                            <li>Czech Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- D -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/dk.png" alt="Denmark Flag">
+                                <span>Denmark</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Superliga</li>
+                            <li>1st Division</li>
+                            <li>DBU Pokalen</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- E -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egypt Flag">
+                                <span>Egypt</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Premier League</li>
+                            <li>Egypt Cup</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/eng.png" alt="England Flag">
+                                <span>England</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Premier League</li>
+                            <li>Championship</li>
+                            <li>League One</li>
+                            <li>League Two</li>
+                            <li>FA Cup</li>
+                            <li>EFL Cup</li>
+                            <li>Community Shield</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- F -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/fr.png" alt="France Flag">
+                                <span>France</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Ligue 1</li>
+                            <li>Ligue 2</li>
+                            <li>Coupe de France</li>
+                            <li>Coupe de la Ligue</li>
+                            <li>Trophée des Champions</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- G -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/de.png" alt="Germany Flag">
+                                <span>Germany</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Bundesliga</li>
+                            <li>2. Bundesliga</li>
+                            <li>3. Liga</li>
+                            <li>DFB-Pokal</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/gr.png" alt="Greece Flag">
+                                <span>Greece</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Super League</li>
+                            <li>Super League 2</li>
+                            <li>Greek Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- I -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/it.png" alt="Italy Flag">
+                                <span>Italy</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Serie A</li>
+                            <li>Serie B</li>
+                            <li>Coppa Italia</li>
+                            <li>Supercoppa Italiana</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- J -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/jp.png" alt="Japan Flag">
+                                <span>Japan</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>J1 League</li>
+                            <li>J2 League</li>
+                            <li>J3 League</li>
+                            <li>Emperor's Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- M -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/mx.png" alt="Mexico Flag">
+                                <span>Mexico</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Liga MX</li>
+                            <li>Liga de Expansión MX</li>
+                            <li>Copa MX</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- N -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/nl.png" alt="Netherlands Flag">
+                                <span>Netherlands</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Eredivisie</li>
+                            <li>Eerste Divisie</li>
+                            <li>KNVB Cup</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- P -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/pt.png" alt="Portugal Flag">
+                                <span>Portugal</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Primeira Liga</li>
+                            <li>Liga Portugal 2</li>
+                            <li>Taça de Portugal</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- R -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ru.png" alt="Russia Flag">
+                                <span>Russia</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Premier League</li>
+                            <li>First League</li>
+                            <li>Russian Cup</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- S -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/es.png" alt="Spain Flag">
+                                <span>Spain</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>LaLiga</li>
+                            <li>LaLiga 2</li>
+                            <li>Copa del Rey</li>
+                            <li>Supercopa de España</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/se.png" alt="Sweden Flag">
+                                <span>Sweden</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Allsvenskan</li>
+                            <li>Superettan</li>
+                            <li>Svenska Cupen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ch.png" alt="Switzerland Flag">
+                                <span>Switzerland</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Super League</li>
+                            <li>Challenge League</li>
+                            <li>Swiss Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- T -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/tr.png" alt="Turkey Flag">
+                                <span>Turkey</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Süper Lig</li>
+                            <li>1. Lig</li>
+                            <li>Turkish Cup</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- U -->
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ua.png" alt="Ukraine Flag">
+                                <span>Ukraine</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>Premier League</li>
+                            <li>First League</li>
+                            <li>Ukrainian Cup</li>
+                            <li>Super Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag">
+                                <span>United Arab Emirates</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>UAE Pro League</li>
+                            <li>First Division</li>
+                            <li>UAE Cup</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="leagues-container__country">
+                        <div class="leagues-container__country-header">
+                            <div class="leagues-container__country-info">
+                                <img src="https://flagcdn.com/w20/us.png" alt="USA Flag">
+                                <span>United States</span>
+                            </div>
+                            <span class="leagues-container__toggle-icon">+</span>
+                        </div>
+                        <ul class="leagues-container__league-list leagues-container__league-list--hidden">
+                            <li>MLS</li>
+                            <li>USL Championship</li>
+                            <li>US Open Cup</li>
+                            <li>MLS Next Pro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <footer class="footer">
+        <div class="footer__top">
+            <img src="img/logo-1.svg" alt="Betting Premier Logo" class="footer__logo" />
+            <nav class="footer__nav">
+                <a href="#">Latest</a>
+                <a href="#">Football</a>
+                <a href="#">Ice Hockey</a>
+                <a href="#">Baseball</a>
+                <a href="#">BasketBall</a>
+                <a href="#">VolleyBall</a>
+            </nav>
+            
+            <p class="footer__copyright">Copyright © 2025 BettingPremier</p>
+        </div>
+        
+        <div class="footer__bottom">
+            <p>
+                18+ Only. Please gamble responsibly!
+                <strong>BeGambleAware<span style="font-size: 0.6em;">.org</span></strong>
+                &nbsp; 18+ | Erlaubt (White-list) | Suchtrisiken |
+                Hilfe unter buwei.de (ENG: Allowed (white list) | Risk of addiction |
+                Help at buwei.de.)
+            </p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
